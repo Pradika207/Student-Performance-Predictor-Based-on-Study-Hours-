@@ -1,0 +1,23 @@
+# 🎯 This version uses the formula of a straight line (y = mx + c)
+
+# Sample data (Hours vs Scores)
+hours_list = [1, 2, 3, 4, 5, 6, 7, 8]
+scores_list = [35, 45, 50, 55, 65, 70, 75, 85]
+
+# Step 1: Calculate the slope (m) and intercept (c) using Least Squares Method
+n = len(hours_list)
+sum_x = sum(hours_list)
+sum_y = sum(scores_list)
+sum_xy = sum([hours_list[i] * scores_list[i] for i in range(n)])
+sum_xx = sum([x ** 2 for x in hours_list])
+
+# y = mx + c
+m = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x ** 2)
+c = (sum_y - m * sum_x) / n
+
+# Input from user
+hours = float(input("Enter number of study hours: "))
+
+# Prediction
+predicted_score = m * hours + c
+print(f"\n📌 Predicted Score for studying {hours} hours: {predicted_score:.2f}")
